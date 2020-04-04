@@ -1,0 +1,18 @@
+ru:
+  activerecord:
+    models:
+      post: 'Статья'
+    attributes:
+      post:
+        title: 'Название'
+        summary: 'Краткое содержание'
+        body: 'Содержание'
+        all_tags: 'Теги'
+      category:
+        name: 'Название'
+        parent_id: 'Категория родителя'
+    errors:
+      messages:
+        blank: 'не может быть пустым.'
+        too_long: 'слишком длинное.'
+        too_short: 'слишком короткое.'

@@ -1,0 +1,7 @@
+<h1><%= t('.All posts') %></h1>
+
+
+<%= render @posts %>
+
+
+<%= will_paginate @posts, renderer: 'BootstrapPaginationHelper::LinkRenderer' %>

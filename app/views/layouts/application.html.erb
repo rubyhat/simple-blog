@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Devsimple</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <span class="navbar-brand"><%= link_to 'DevSimple', root_path %></span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item <%= 'active' if current_page?(root_path) || current_page?(posts_path) %>">
+            <a class="nav-link" href="<%= root_path %>">Все статьи <span class="sr-only">(current)</span></a>
+          </li>
+          <% Category.order(:name).roots.each do |category| %>
+          <li class="nav-item <%= 'active' if current_page?(category_path(category)) %>">
+          <%= link_to  category.name, category, class: 'nav-link' %>
+          </li>
+          <% end %>
+          <li class="nav-item <%= "active" if I18n.locale == :ru %>">
+            <%= link_to "Rus", { locale: :ru}, class: "nav-link" %>
+          </li>
+          <li class="nav-item <%= "active" if I18n.locale == :en %>">
+            <%= link_to "Eng", { locale: :en}, class: "nav-link" %>
+          </li>
+        </ul>
+        <%= link_to t('common.New post'), new_post_path, class: "btn btn-outline-primary pull-xs-right" %>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container main">
+    <div class="row">
+      <div class="col-md-12">
+        <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name %>">
+          <%= msg %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <%= yield %>
+      </div>
+      <div class="col-md-4">
+        <%= render 'shared/submenu' %>
+        <div class="tag_cloud">
+          <hr>
+          <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5})  do |tag, css_class| %>
+          <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
