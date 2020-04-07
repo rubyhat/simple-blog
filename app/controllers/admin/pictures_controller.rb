@@ -1,4 +1,4 @@
-class Picture < ApplicationController
+class Admin::Picture < ApplicationController
   def create
     @picture = Picture.new(image_params)
     @picture.save

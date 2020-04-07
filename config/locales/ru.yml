@@ -1,28 +1,30 @@
 ru:
   posts:
-    new:
-      title: 'Новая статья'
-    edit:
-      Edit Post: 'Редактировать статью'
     index:
       All posts: 'Статьи'
-    form:
-      Save:
-        '%{action} статью'
-      Back: 'Назад'
-  categories:
-    index:
-      title: 'Категории'
-    new:
-      title: 'Новая категория'
-    edit:
-      Edit Post: 'Редактировать категорию'
-    index:
-      All posts: 'Категории'
-    form:
-      Save:
-        '%{action} категорию'
-      Back: 'Назад'
+  admin:
+    posts:
+      new:
+        title: 'Новая статья'
+      edit:
+        Edit Post: 'Редактировать статью'
+      form:
+        Save:
+          '%{action} статью'
+        Back: 'Назад'
+    categories:
+      index:
+        title: 'Категории'
+      new:
+        title: 'Новая категория'
+      edit:
+        Edit Category: 'Редактировать категорию'
+      index:
+        All posts: 'Категории'
+      form:
+        Save:
+          '%{action} категорию'
+        Back: 'Назад'
   common:
     errors: 'При заполнении формы возникли ошибки'
     New post: 'Новый пост'

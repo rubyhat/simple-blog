@@ -7,7 +7,7 @@
 </div>
 <% end %>
 
-<%= form_for @category, html: { multipart: true } do |form| %>
+<%= form_for [:admin, @category] do |form| %>
 <div class="form-group">
   <%= form.label :name  %>
   <%= form.text_field :name, class: 'form-control' %>
@@ -16,6 +16,7 @@
 <div class="form-group">
   <%= form.label :parent_id  %>
   <%= form.collection_select :parent_id, Category.where("id != #{@category.id}").order(:name), :id, :name, { include_blank: true }, class: 'form-control' %>
+  <%# <%= form.collection_select :parent_id, @categories, :id, :name, { include_blank: true }, class: 'form-control' %1> %>
 </div>
 
 
